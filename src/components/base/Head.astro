@@ -64,7 +64,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Sitemap -->
-<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="sitemap" href={`${base}sitemap-index.xml`} />
 
 <!-- Open Graph & Facebook -->
 <meta property="og:type" content="website" />

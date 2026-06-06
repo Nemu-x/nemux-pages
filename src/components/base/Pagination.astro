@@ -1,7 +1,7 @@
 ---
 import type { Page } from 'astro'
 import { POSTS_CONFIG } from '~/config'
-import { cn } from '~/lib/utils'
+import { cn, withBase } from '~/lib/utils'
 
 interface Props {
   page: Page<any>
@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { page, baseUrl, class: className = '' } = Astro.props
+const resolvedBaseUrl = withBase(baseUrl)
 
 // 处理大量页码的显示逻辑
 const getVisiblePages = (current: number, total: number) => {
@@ -43,7 +44,7 @@ const visiblePages = getVisiblePages(page.currentPage, page.lastPage)
             <span class="w-6 sm:w-9 text-center text-muted-foreground text-xs sm:text-sm">...</span>
           ) : (
             <a
-              href={pageNum === 1 ? baseUrl : `${baseUrl}/${pageNum}`}
+              href={pageNum === 1 ? resolvedBaseUrl : `${resolvedBaseUrl}/${pageNum}`}
               class={`inline-flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center text-xs sm:text-sm transition-colors ${
                 page.currentPage === pageNum
                   ? 'text-primary font-medium border-primary/20 border'

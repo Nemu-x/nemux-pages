@@ -6,6 +6,22 @@ export function cn(...classes: ClassValue[]) {
   return twMerge(clsx(classes))
 }
 
+/** Prefix internal paths with Astro base (e.g. /nemux-pages) for GitHub Pages project sites. */
+export function withBase(path: string): string {
+  if (!path || path.startsWith('http') || path.startsWith('#')) {
+    return path
+  }
+
+  const base = import.meta.env.BASE_URL
+  const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
+
+  if (!normalizedBase || normalizedBase === '/') {
+    return path.startsWith('/') ? path : `/${path}`
+  }
+
+  return `${normalizedBase}${path.startsWith('/') ? path : `/${path}`}`
+}
+
 // 文章按时间排序
 export function postsSort(posts: CollectionEntry<'posts'>[]) {
   return posts.slice().sort((a, b) => {
