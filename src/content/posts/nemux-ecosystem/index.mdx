@@ -1,0 +1,36 @@
+---
+title: 'The Nemux ecosystem — SlothClash & ClashFest'
+description: 'Two clients, two platforms — desktop and Android, built around Mihomo / Clash Meta.'
+pubDate: 2026-06-03
+author: 'Nemu-x'
+tags: ['nemux']
+---
+
+Right now the Nemux ecosystem is mostly two clients built around [mihomo](https://github.com/MetaCubeX/mihomo) / Clash Meta — same core philosophy, different platforms. Other repos will land here as they go public.
+
+## SlothClash — desktop
+
+[SlothClash](https://github.com/Nemu-x/SlothClash) is the desktop client for Windows, macOS, and Linux, based on [clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev).
+
+Recent focus:
+
+- Fail-closed signed in-app updates (minisign + ed25519 verification)
+- Import local configs and proxy share links (`vless://`, `vmess://`, `ss://`, etc.)
+- UI polish — design tokens, warm light theme, cleaner Proxies and Rules flows
+
+## ClashFest — Android
+
+[ClashFest](https://github.com/Nemu-x/ClashFest) is the Android client, based on [Clash Meta for Android](https://github.com/MetaCubeX/ClashMetaForAndroid).
+
+Recent focus:
+
+- Dedicated Profiles tab with collapsible proxy groups
+- Read-only `config.yaml` viewer per profile (debug what the app actually generated)
+- Simpler proxy chain setup — First hop → Exit, with explicit Save vs Use now actions
+- JNI hardening and security audit fixes
+
+## Why two clients?
+
+Desktop and mobile have different constraints: TUN lifecycle, background services, UI patterns, update mechanisms, and how users import subscriptions.
+
+SlothClash and ClashFest each go deep on their platform. Both pin the same Mihomo core and ship on a regular cadence. This devlog is where updates from across the Nemux ecosystem land in one place.

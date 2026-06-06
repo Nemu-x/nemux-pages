@@ -1,0 +1,25 @@
+---
+title: 'ClashFest v0.7.0 — profiles redesign and config transparency'
+description: 'Dedicated Profiles tab, read-only config.yaml viewer, simpler proxy chains, and Mihomo v1.19.26.'
+pubDate: 2026-06-04
+author: 'Nemu-x'
+tags: ['clashfest', 'release']
+---
+
+[ClashFest v0.7.0](https://github.com/Nemu-x/ClashFest/releases/tag/v0.7.0) focuses on making profiles easier to manage and configs easier to inspect.
+
+## Highlights
+
+- **Profiles redesign** — dedicated tab with collapsible proxy groups
+- **Per-profile config viewer** — read-only processed `config.yaml` with syntax highlighting, copy, share, download; works offline
+- **Simpler proxy chain** — two pickers: First hop → Exit (exit = the IP you show online)
+- **Explicit chain actions** — Save chain vs Use now (Global), optional YAML preview
+- **Reworked update flow** — manual check shows in-app result; Home surfaces available updates
+- **Mihomo core v1.19.26** + JNI `recover()` so bridge panics don't SIGABRT the app
+
+## Security
+
+- Deeplink config install now requires explicit confirmation
+- Port-handling audit fixes and cross-UID listener leak closed in Strict mode
+
+Full changelog on GitHub: [v0.6.1...v0.7.0](https://github.com/Nemu-x/ClashFest/compare/v0.6.1...v0.7.0)

@@ -1,0 +1,32 @@
+/* Nemu-x Devlog — purple vibe accents on Litos dark base */
+
+@layer base {
+  .dark {
+    --ring: 263 70% 58%;
+    --tag-bg: 263 28% 16%;
+    --tag-bg-hover: 263 40% 26%;
+    --tag-border: 263 25% 22%;
+    --tag-text: 263 45% 86%;
+    --scrollbar: 263 18% 32%;
+    --nemux-accent: 263 70% 58%;
+    --nemux-accent-hover: 263 75% 70%;
+  }
+
+  .dark .pro a {
+    color: hsl(var(--nemux-accent));
+    text-decoration-color: hsl(var(--nemux-accent) / 0.4);
+  }
+
+  .dark .pro a:hover {
+    color: hsl(var(--nemux-accent-hover));
+  }
+
+  .dark a.text-foreground:hover,
+  .dark .hover\:text-foreground:hover {
+    color: hsl(var(--nemux-accent-hover));
+  }
+
+  .dark .text-foreground {
+    transition: color 0.15s ease;
+  }
+}

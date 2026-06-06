@@ -1,0 +1,25 @@
+---
+title: 'SlothClash v0.6.0 — signed updates and a UI you can live in'
+description: 'Fail-closed minisign verification, security hardening, and a major visual overhaul.'
+pubDate: 2026-06-06
+author: 'Nemu-x'
+tags: ['slothclash', 'release']
+---
+
+[SlothClash v0.6.0](https://github.com/Nemu-x/SlothClash/releases/tag/v0.6.0) is the big polish release — security, signed self-updates, and a UI overhaul.
+
+## Highlights
+
+- **Signed, fail-closed in-app updates** — releases verified with minisign (ed25519) before anything launches; unsigned or tampered builds are refused
+- **Update UX** — download progress, in-app changelog, restart-to-apply flow, automatic updates toggle
+- **CI security gating** — `govulncheck` and `pnpm audit --prod` block on known vulnerabilities
+- **Mihomo core pinned to v1.19.26** — reproducible builds, no more `latest` at compile time
+- **Import local configs & share links** — `config.yaml`, `vless://`, `vmess://`, `ss://`, and more
+- **Visual overhaul** — design-token system, milky-coffee light theme, Proxies accordion, reworked Rules modal
+
+## Fixes worth noting
+
+- TUN no longer breaks the first connect after an in-app update
+- Windows installer shows progress during VC++ runtime install
+
+Full changelog on GitHub: [v0.5.1...v0.6.0](https://github.com/Nemu-x/SlothClash/compare/v0.5.1...v0.6.0)
