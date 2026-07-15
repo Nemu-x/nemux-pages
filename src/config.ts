@@ -15,6 +15,8 @@ import type {
 const SIGNAL_URL =
   'https://signal.me/#eu/c3YCfUJcPYiBxGtZS9qHYkgGc97Dv19zGn5pUTJ_spA0rE1c1lJCpbwPBBXvnb6-'
 
+const TELEGRAM_URL = 'https://t.me/nemux_dev'
+
 export const SITE: Site = {
   title: 'Nemu-x Devlog',
   description: 'Dev notes and release announcements from Nemu-x — clients, tools, and whatever ships next.',
@@ -38,6 +40,7 @@ export const FOOTER_LINKS: Link[] = [
   { name: 'Posts', url: '/posts' },
   { name: 'Projects', url: '/projects' },
   { name: 'Tags', url: '/tags' },
+  { name: 'Telegram', url: TELEGRAM_URL },
   { name: 'Signal', url: SIGNAL_URL },
 ]
 
@@ -46,6 +49,11 @@ export const SOCIAL_LINKS: SocialLink[] = [
     name: 'github',
     url: 'https://github.com/Nemu-x',
     icon: 'icon-[ri--github-fill]',
+  },
+  {
+    name: 'telegram',
+    url: TELEGRAM_URL,
+    icon: 'icon-[simple-icons--telegram]',
   },
   {
     name: 'signal',

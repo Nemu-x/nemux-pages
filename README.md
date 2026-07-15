@@ -41,7 +41,11 @@ Your content here. Keep it short — link to the full GitHub release for details
 
 ### Tags
 
-Use: `nemux`, `slothclash`, `clashfest`, `release`
+Use: `nemux`, `slothclash`, `clashfest`, `swissknife`, `release`
+
+## Automatic release posts
+
+`.github/workflows/sync-releases.yml` runs every 6 hours (and on manual dispatch): it checks GitHub releases of SlothClash, ClashFest, and SwissKnife-for-MS-Graph via `scripts/sync-releases.ts`, creates a post for each new release, refreshes star/fork counts on project cards, commits, and triggers the Pages deploy. Manually written posts are never touched — a release is skipped if a post folder with its slug already exists.
 
 ## Production build
 
