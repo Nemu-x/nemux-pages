@@ -6,8 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  actions: write
+  contents: read
 
 concurrency:
   group: sync-releases
@@ -17,8 +16,12 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      # Pushing via the deploy key bypasses the protect-main ruleset and,
+      # unlike GITHUB_TOKEN pushes, still triggers the Pages deploy workflow.
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -40,7 +43,6 @@ jobs:
         run: pnpm tsx scripts/sync-releases.ts
 
       - name: Commit and push changes
-        id: commit
         run: |
           if [[ -n "$(git status --porcelain src/content)" ]]; then
             git config user.name "github-actions[bot]"
@@ -48,13 +50,6 @@ jobs:
             git add src/content
             git commit -m "chore: sync release posts and project stats"
             git push
-            echo "pushed=true" >> "$GITHUB_OUTPUT"
           else
             echo "Nothing to commit."
           fi
-
-      - name: Trigger Pages deploy
-        if: steps.commit.outputs.pushed == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run deploy.yml --ref main --repo "$GITHUB_REPOSITORY"
